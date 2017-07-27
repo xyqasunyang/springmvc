@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sun.www.dao.AccountDAO">
+    <select id="getAccount" parameterType="java.lang.String"
+            resultType="com.sun.www.bean.AccountBean">
+        select * from account where accountId = #{accountId}
+    </select>
+
+    <insert id="createAccount" parameterType="com.sun.www.bean.AccountBean">
+        insert into account(id, accountId,name,licenseNumber,licenseType,status,createDate)
+         values(#{id}, #{accountId},#{name},#{licenseNumber},#{licenseType},1,now())
+    </insert>
+
+    <select id="getAccountByLicenseNum" parameterType="java.lang.String"
+            resultType="com.sun.www.bean.AccountBean">
+        select * from account where licenseNumber = #{licenseNumber}
+    </select>
+</mapper>
